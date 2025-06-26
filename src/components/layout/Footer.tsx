@@ -1,0 +1,119 @@
+"use client";
+
+import Link from "next/link";
+import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiArrowUp } from "react-icons/fi";
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  return (
+    <footer className="py-16 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"></div>
+        <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-[100px]" />
+      </div>
+      
+      <div className="section-container relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-16">
+          <div className="col-span-1 md:col-span-2">
+            <Link
+              href="#home"
+              className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
+            >
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Dev</span>
+              <span className="font-semibold">Portfolio</span>
+            </Link>
+            <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-md">
+              Crafting digital experiences with modern technologies. 
+              Available for freelance work and collaborations.
+            </p>
+            
+            <div className="flex space-x-3 mt-6">
+              <a
+                href="https://github.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
+                aria-label="GitHub"
+              >
+                <FiGithub className="h-5 w-5" />
+              </a>
+              <a
+                href="https://linkedin.com/in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
+                aria-label="LinkedIn"
+              >
+                <FiLinkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://twitter.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
+                aria-label="Twitter"
+              >
+                <FiTwitter className="h-5 w-5" />
+              </a>
+              <a
+                href="mailto:example@email.com"
+                className="p-2 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
+                aria-label="Email"
+              >
+                <FiMail className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">Navigation</h3>
+            <ul className="space-y-3">
+              {["Home", "About", "Skills", "Projects", "Contact"].map((item) => (
+                <li key={item}>
+                  <Link 
+                    href={`#${item.toLowerCase()}`}
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">Contact</h3>
+            <ul className="space-y-3">
+              <li className="text-gray-600 dark:text-gray-300">example@email.com</li>
+              <li className="text-gray-600 dark:text-gray-300">+1 (555) 123-4567</li>
+              <li className="text-gray-600 dark:text-gray-300">New York, NY</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200/10 dark:border-gray-800/30">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 md:mb-0">
+            © {currentYear} DevPortfolio. All rights reserved.
+          </p>
+          
+          <button 
+            onClick={scrollToTop}
+            className="p-3 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
+            aria-label="Scroll to top"
+          >
+            <FiArrowUp className="h-5 w-5" />
+          </button>
+        </div>
+      </div>
+    </footer>
+  );
+} 
