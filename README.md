@@ -60,10 +60,8 @@ portfolio/
 │   ├── components/    # React components
 │   │   ├── layout/    # Layout components
 │   │   ├── sections/  # Page sections
-│   │   └── ui/        # UI components
-│   ├── hooks/         # Custom hooks
-│   ├── lib/           # Utility functions
-│   └── types/         # TypeScript types
+│   │   
+│   |
 ├── tailwind.config.ts # Tailwind configuration
 └── README.md          # Project documentation
 ```

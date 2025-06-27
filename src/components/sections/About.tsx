@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaAngular, FaReact, FaDesktop } from "react-icons/fa";
 import { SiSpringboot } from "react-icons/si";
@@ -35,17 +35,15 @@ export default function About() {
             className="relative"
           >
             <div className="aspect-square relative rounded-2xl overflow-hidden glass border border-gray-200/10 dark:border-gray-700/20 shadow-subtle dark:shadow-subtle-dark">
-              <svg className="w-full h-full text-gray-300" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-              </svg>
+              <Image src="/projects/about.webp" alt="About" fill className="object-cover" />
             </div>
-            
+{/*             
             <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-xl glass border border-gray-200/10 dark:border-gray-700/20 shadow-subtle dark:shadow-subtle-dark flex items-center justify-center">
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">5+</div>
+                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">1+</div>
                 <div className="text-xs text-gray-500 dark:text-gray-400">Years<br />Experience</div>
               </div>
-            </div>
+            </div> */}
           </motion.div>
           
           <motion.div
