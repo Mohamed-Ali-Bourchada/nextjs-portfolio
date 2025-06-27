@@ -39,6 +39,7 @@ html {
   --color-foreground: var(--foreground, #f8fafc);
   --font-sans: var(--font-poppins, system-ui), var(--font-inter, system-ui), system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  scroll-behavior: smooth;
 }
 
 body {

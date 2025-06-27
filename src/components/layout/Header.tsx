@@ -24,10 +24,20 @@ export default function Header() {
       
       // Update active section based on scroll position
       const sections = navLinks.map(link => link.href.substring(1));
+      
+      // Check if we're at the top of the page (home section)
+      if (window.scrollY < 100) {
+        setActiveSection("home");
+        return;
+      }
+      
+      // Otherwise check each section
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
+          // Consider a section in view if its top is within 100px of the viewport top
+          // or if its bottom is still below the viewport top
           return rect.top <= 100 && rect.bottom >= 100;
         }
         return false;
@@ -39,8 +49,18 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
+    
+    // Call once on mount to set initial active section
+    handleScroll();
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
+  // Handle click on navigation links
+  const handleNavClick = (sectionId: string) => {
+    setActiveSection(sectionId);
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header
@@ -54,6 +74,7 @@ export default function Header() {
         {/* Logo */}
         <Link
           href="#home"
+          onClick={() => handleNavClick("home")}
           className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
         >
           <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Dev</span>
@@ -66,6 +87,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={() => handleNavClick(link.href.substring(1))}
               className={`text-sm font-medium transition-all duration-300 relative ${
                 activeSection === link.href.substring(1)
                   ? "text-blue-400"
@@ -89,11 +111,13 @@ export default function Header() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-md glass hover:bg-gray-700/30 transition-colors"
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? (
-              <FiX className="h-5 w-5" />
+              <FiX className="h-5 w-5" aria-hidden="true" />
             ) : (
-              <FiMenu className="h-5 w-5" />
+              <FiMenu className="h-5 w-5" aria-hidden="true" />
             )}
           </button>
         </div>
@@ -107,6 +131,9 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden glass border-t border-gray-700/20"
+            id="mobile-menu"
+            role="navigation"
+            aria-label="Mobile navigation"
           >
             <div className="section-container py-4">
               <nav className="flex flex-col space-y-3">
@@ -114,7 +141,7 @@ export default function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => handleNavClick(link.href.substring(1))}
                     className={`text-sm py-2 px-4 rounded-lg transition-colors ${
                       activeSection === link.href.substring(1)
                         ? "text-blue-400 bg-blue-500/5"

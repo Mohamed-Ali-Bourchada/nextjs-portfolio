@@ -41,7 +41,7 @@ export default function Hero() {
   }, [displayName, fullName]);
 
   return (
-    <section className="min-h-screen relative flex items-center overflow-hidden py-10 md:py-0">
+    <section id="home" className="min-h-screen relative flex items-center overflow-hidden py-10 md:py-0">
       {/* Enhanced background - lazy loaded */}
       {isClient && <HeroBackground />}
       
@@ -147,7 +147,10 @@ export default function Hero() {
                 <span className="text-xs text-gray-400 font-medium uppercase tracking-wider">Connect</span>
                 <div className="flex gap-3">
                   <motion.a 
-                    href="https://github.com/Mohamed-Ali-Bourchada" target="_blank"
+                    href="https://github.com/Mohamed-Ali-Bourchada" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit my GitHub profile"
                     className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-800/60 border border-gray-700/60 backdrop-blur-sm"
                     whileHover={isClient ? { y: -3, borderColor: "#3b82f6", boxShadow: "0 4px 12px rgba(59, 130, 246, 0.3)" } : undefined}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -155,7 +158,10 @@ export default function Hero() {
                     <FaGithub className="w-4 h-4 text-gray-300" />
                   </motion.a>
                   <motion.a 
-                    href="https://www.linkedin.com/in/mohamed-ali-bourchada/" target="_blank"
+                    href="https://www.linkedin.com/in/mohamed-ali-bourchada/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit my LinkedIn profile"
                     className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-800/60 border border-gray-700/60 backdrop-blur-sm"
                     whileHover={isClient ? { y: -3, borderColor: "#3b82f6", boxShadow: "0 4px 12px rgba(59, 130, 246, 0.3)" } : undefined}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -163,7 +169,10 @@ export default function Hero() {
                     <FaLinkedinIn className="w-4 h-4 text-gray-300" />
                   </motion.a>
                   <motion.a 
-                    href="https://twitter.com/ma_bourchada" target="_blank"
+                    href="https://twitter.com/ma_bourchada" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit my Twitter profile"
                     className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-800/60 border border-gray-700/60 backdrop-blur-sm"
                     whileHover={isClient ? { y: -3, borderColor: "#3b82f6", boxShadow: "0 4px 12px rgba(59, 130, 246, 0.3)" } : undefined}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}

@@ -108,7 +108,7 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
               <div>
                 <label
                   htmlFor="name"
@@ -123,8 +123,11 @@ export default function Contact() {
                   required
                   value={formData.name}
                   onChange={handleChange}
+                  aria-required="true"
+                  aria-describedby="name-description"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                 />
+                <div id="name-description" className="sr-only">Please enter your full name</div>
               </div>
 
               <div>
@@ -141,8 +144,11 @@ export default function Contact() {
                   required
                   value={formData.email}
                   onChange={handleChange}
+                  aria-required="true"
+                  aria-describedby="email-description"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                 />
+                <div id="email-description" className="sr-only">Please enter a valid email address</div>
               </div>
 
               <div>
@@ -159,13 +165,17 @@ export default function Contact() {
                   required
                   value={formData.message}
                   onChange={handleChange}
+                  aria-required="true"
+                  aria-describedby="message-description"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 resize-none"
                 ></textarea>
+                <div id="message-description" className="sr-only">Please enter your message</div>
               </div>
 
               <button
                 type="submit"
                 className="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                aria-label="Send message"
               >
                 Send Message
               </button>
