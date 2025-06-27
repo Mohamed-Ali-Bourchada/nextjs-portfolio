@@ -83,11 +83,6 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Disable transitions temporarily when switching themes */
-.disable-transition * {
-  transition: none !important;
-}
-
 /* Modern button styles */
 .btn-primary {
   @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;

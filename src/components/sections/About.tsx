@@ -1,8 +1,13 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaAngular, FaReact, FaDesktop } from "react-icons/fa";
-import { SiSpringboot } from "react-icons/si";
+import dynamic from "next/dynamic";
+
+// Dynamically import icons to reduce bundle size
+const IconsSection = dynamic(() => import("./about/IconsSection"), {
+  ssr: true,
+  loading: () => <div className="h-20"></div>
+});
 
 export default function About() {
   return (
@@ -35,15 +40,16 @@ export default function About() {
             className="relative"
           >
             <div className="aspect-square relative rounded-2xl overflow-hidden glass border border-gray-200/10 dark:border-gray-700/20 shadow-subtle dark:shadow-subtle-dark">
-              <Image src="/projects/about.webp" alt="About" fill className="object-cover" />
+              <Image 
+                src="/projects/about.webp" 
+                alt="About" 
+                width={500}
+                height={500}
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 500px"
+                priority={false}
+              />
             </div>
-{/*             
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-xl glass border border-gray-200/10 dark:border-gray-700/20 shadow-subtle dark:shadow-subtle-dark flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">1+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Years<br />Experience</div>
-              </div>
-            </div> */}
           </motion.div>
           
           <motion.div
@@ -63,32 +69,8 @@ export default function About() {
               Additionally, I provide IT services including hardware and software maintenance, ensuring comprehensive technical solutions for all client needs.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-              <div className="flex items-center">
-                <div className="w-10 h-10 rounded-lg glass flex items-center justify-center mr-3">
-                  <FaAngular className="text-red-600 w-5 h-5" />
-                </div>
-                <span className="font-medium">Angular Development</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-10 h-10 rounded-lg glass flex items-center justify-center mr-3">
-                  <SiSpringboot className="text-green-600 w-5 h-5" />
-                </div>
-                <span className="font-medium">Spring Boot</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-10 h-10 rounded-lg glass flex items-center justify-center mr-3">
-                  <FaReact className="text-blue-500 w-5 h-5" />
-                </div>
-                <span className="font-medium">React Native</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-10 h-10 rounded-lg glass flex items-center justify-center mr-3">
-                  <FaDesktop className="text-gray-300 w-5 h-5" />
-                </div>
-                <span className="font-medium">IT Services</span>
-              </div>
-            </div>
+            {/* Dynamically loaded icons section */}
+            <IconsSection />
           </motion.div>
         </div>
       </div>

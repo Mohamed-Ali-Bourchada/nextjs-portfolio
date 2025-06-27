@@ -1,5 +1,10 @@
 import type { NextConfig } from "next";
 
+// Add bundle analyzer
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -16,6 +21,11 @@ const nextConfig: NextConfig = {
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  // Optimize for production
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
 };
 
-export default nextConfig;
+// Export with bundle analyzer
+export default withBundleAnalyzer(nextConfig);

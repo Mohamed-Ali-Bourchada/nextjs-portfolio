@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/layout/ThemeProvider";
-import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,27 +31,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
-        {/* Inline script to ensure dark mode */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                // Always use dark mode
-                document.documentElement.classList.add('dark');
-              })();
-            `,
-          }}
-        />
-      </head>
-      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
-        <ThemeProvider
-          defaultTheme="dark"
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+    <html lang="en" className="dark">
+      <body className={`${inter.variable} ${poppins.variable} font-sans bg-slate-900 text-slate-50 antialiased`}>
+        {children}
       </body>
     </html>
   );
