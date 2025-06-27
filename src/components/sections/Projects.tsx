@@ -54,8 +54,8 @@ export default function Projects() {
     <section id="projects" className="py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-40 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-[100px]" />
-        <div className="absolute -bottom-40 -left-20 w-80 h-80 bg-accent/5 rounded-full blur-[100px]" />
+        <div className="absolute top-40 -right-20 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px]" />
+        <div className="absolute -bottom-40 -left-20 w-80 h-80 bg-purple-500/5 rounded-full blur-[100px]" />
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] dark:opacity-[0.03]" />
       </div>
       
@@ -67,9 +67,9 @@ export default function Projects() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <span className="inline-block text-sm font-medium text-primary dark:text-primary-light uppercase tracking-wider mb-2">Portfolio</span>
+          <span className="inline-block text-sm font-medium text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">Portfolio</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Recent Projects</h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
+          <div className="h-1 w-20 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -80,7 +80,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="glass rounded-3xl overflow-hidden border border-gray-200/10 dark:border-gray-800/30 shadow-subtle dark:shadow-subtle-dark group"
+              className="glass rounded-3xl overflow-hidden border border-gray-200/10 dark:border-gray-700/20 shadow-subtle dark:shadow-subtle-dark group"
             >
               <div className="relative h-56 overflow-hidden">
                 <Image
@@ -121,19 +121,19 @@ export default function Projects() {
                       className="p-2 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
                       aria-label={`GitHub repository for ${project.title}`}
                     >
-                      <FiGithub className="h-5 w-5" />
+                      <FiGithub className="h-5 w-5 text-gray-700 dark:text-gray-300" />
                     </Link>
                     <Link
                       href={project.liveUrl}
                       className="p-2 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
                       aria-label={`Live demo for ${project.title}`}
                     >
-                      <FiExternalLink className="h-5 w-5" />
+                      <FiExternalLink className="h-5 w-5 text-gray-700 dark:text-gray-300" />
                     </Link>
                   </div>
                   <Link
                     href={project.liveUrl}
-                    className="inline-flex items-center text-sm font-medium text-primary dark:text-primary-light hover:underline"
+                    className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
                   >
                     View Details
                     <FiArrowRight className="ml-1 h-4 w-4" />

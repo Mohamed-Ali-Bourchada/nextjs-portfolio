@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import { Viewport } from "next";
 import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
@@ -7,8 +7,8 @@ import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 
-export const metadata: Metadata = {
-  colorScheme: "dark light",
+export const viewport: Viewport = {
+  colorScheme: "dark",
 };
 
 export default function Home() {

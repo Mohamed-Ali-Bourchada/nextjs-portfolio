@@ -18,7 +18,7 @@ export default function Footer() {
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"></div>
-        <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-[100px]" />
+        <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px]" />
       </div>
       
       <div className="section-container relative z-10">
@@ -28,17 +28,17 @@ export default function Footer() {
               href="#home"
               className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
             >
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Dev</span>
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Dev</span>
               <span className="font-semibold">Portfolio</span>
             </Link>
             <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-md">
-              Crafting digital experiences with modern technologies. 
+              Professional web and mobile development services.
               Available for freelance work and collaborations.
             </p>
             
             <div className="flex space-x-3 mt-6">
               <a
-                href="https://github.com/"
+                href="https://github.com/Mohamed-Ali-Bourchada"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
@@ -47,7 +47,7 @@ export default function Footer() {
                 <FiGithub className="h-5 w-5" />
               </a>
               <a
-                href="https://linkedin.com/in/"
+                href="https://www.linkedin.com/in/mohamed-ali-bourchada/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
@@ -56,7 +56,7 @@ export default function Footer() {
                 <FiLinkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://twitter.com/"
+                href="https://x.com/MohamedBrrr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
@@ -65,7 +65,7 @@ export default function Footer() {
                 <FiTwitter className="h-5 w-5" />
               </a>
               <a
-                href="mailto:example@email.com"
+                href="mailto:ma.bourchada@gmail.com"
                 className="p-2 rounded-full glass hover:bg-gray-200/10 dark:hover:bg-gray-700/30 transition-all hover:scale-110"
                 aria-label="Email"
               >
@@ -81,7 +81,7 @@ export default function Footer() {
                 <li key={item}>
                   <Link 
                     href={`#${item.toLowerCase()}`}
-                    className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     {item}
                   </Link>
@@ -93,9 +93,9 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li className="text-gray-600 dark:text-gray-300">example@email.com</li>
-              <li className="text-gray-600 dark:text-gray-300">+1 (555) 123-4567</li>
-              <li className="text-gray-600 dark:text-gray-300">New York, NY</li>
+              <li className="text-gray-600 dark:text-gray-300">ma.bourchada@gmail.com</li>
+              <li className="text-gray-600 dark:text-gray-300">+216 58 690 686</li>
+              <li className="text-gray-600 dark:text-gray-300">Djerba, Tunisia</li>
             </ul>
           </div>
         </div>

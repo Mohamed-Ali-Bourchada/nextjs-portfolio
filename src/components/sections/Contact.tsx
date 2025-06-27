@@ -33,7 +33,7 @@ export default function Contact() {
     setFormStatus({
       submitted: true,
       error: false,
-      message: "Thank you for your message! I&apos;ll get back to you soon.",
+      message: "Thank you for your message! I'll get back to you soon.",
     });
     
     // Reset form
@@ -55,8 +55,9 @@ export default function Contact() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
-          <div className="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
+          <span className="inline-block text-sm font-medium text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">Get In Touch</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Me</h2>
+          <div className="h-1 w-20 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -66,7 +67,7 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Get In Touch</h3>
+            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-8">
               Have a project in mind or want to discuss potential opportunities?
               Fill out the form or reach out through the provided channels.
@@ -74,29 +75,29 @@ export default function Contact() {
 
             <div className="space-y-4">
               <a
-                href="mailto:contact@example.com"
+                href="mailto:ma.bourchada@gmail.com"
                 className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <FaEnvelope className="mr-3 text-blue-600 dark:text-blue-400" />
-                <span>contact@example.com</span>
+                <span>ma.bourchada@gmail.com</span>
               </a>
               <a
-                href="https://github.com/"
+                href="https://github.com/Mohamed-Ali-Bourchada"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <FaGithub className="mr-3 text-blue-600 dark:text-blue-400" />
-                <span>github.com/yourusername</span>
+                <span>github</span>
               </a>
               <a
-                href="https://linkedin.com/in/"
+                href="https://www.linkedin.com/in/mohamed-ali-bourchada/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <FaLinkedin className="mr-3 text-blue-600 dark:text-blue-400" />
-                <span>linkedin.com/in/yourusername</span>
+                <span>linkedin</span>
               </a>
             </div>
           </motion.div>
@@ -164,7 +165,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full py-3 px-6 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                className="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
               >
                 Send Message
               </button>

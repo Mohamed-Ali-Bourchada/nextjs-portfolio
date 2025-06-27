@@ -19,16 +19,16 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         
-        primary: {
-          DEFAULT: "var(--primary)",
-          light: "var(--primary-light)",
-          dark: "var(--primary-dark)",
+        blue: {
+          400: "var(--blue-400)",
+          500: "var(--blue-500)",
+          600: "var(--blue-600)",
         },
         
-        accent: {
-          DEFAULT: "var(--accent)",
-          light: "var(--accent-light)",
-          dark: "var(--accent-dark)",
+        purple: {
+          400: "var(--purple-400)",
+          500: "var(--purple-500)",
+          600: "var(--purple-600)",
         },
         
         success: "var(--success)",
@@ -40,13 +40,17 @@ module.exports = {
           100: "var(--gray-100)",
           200: "var(--gray-200)",
           300: "var(--gray-300)",
+          400: "var(--gray-400)",
+          500: "var(--gray-500)",
+          600: "var(--gray-600)",
+          700: "var(--gray-700)",
           800: "var(--gray-800)",
           900: "var(--gray-900)",
         },
         
         border: "var(--gray-200)",
         input: "var(--gray-200)",
-        ring: "var(--primary)",
+        ring: "var(--blue-500)",
         
         muted: {
           DEFAULT: "var(--gray-100)",
