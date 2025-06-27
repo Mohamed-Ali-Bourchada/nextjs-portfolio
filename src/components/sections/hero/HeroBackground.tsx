@@ -5,12 +5,29 @@ import { useEffect, useState, useMemo } from "react";
 
 export default function HeroBackground() {
   const [isClient, setIsClient] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   
-  // Generate particle data only on client side
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    if (typeof window !== 'undefined') {
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+    }
+  }, []);
+  
+  // Generate particle data only on client side - reduced for mobile
   const particles = useMemo(() => {
     if (typeof window === 'undefined') return [];
     
-    return Array.from({ length: 25 }, () => ({
+    // Reduce particle count on mobile
+    const count = isMobile ? 10 : 25;
+    
+    return Array.from({ length: count }, () => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 4 + 1,
@@ -18,40 +35,93 @@ export default function HeroBackground() {
       duration: Math.random() * 20 + 10,
       delay: Math.random() * 5
     }));
-  }, []);
+  }, [isMobile]);
   
-  // Generate grid points for tech grid effect
+  // Generate grid points for tech grid effect - reduced for mobile
   const gridPoints = useMemo(() => {
     if (typeof window === 'undefined') return [];
     
-    return Array.from({ length: 30 }, () => ({
+    // Reduce grid points on mobile
+    const count = isMobile ? 12 : 30;
+    
+    return Array.from({ length: count }, () => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 2 + 1,
       pulseDelay: Math.random() * 5
     }));
-  }, []);
+  }, [isMobile]);
   
-  // Generate floating shapes
+  // Generate floating shapes - reduced for mobile
   const floatingShapes = useMemo(() => {
     if (typeof window === 'undefined') return [];
     
-    return Array.from({ length: 6 }, (_, i) => ({
+    // Reduce shapes on mobile
+    const count = isMobile ? 3 : 6;
+    
+    return Array.from({ length: count }, (_, i) => ({
       x: 15 + (i * 15) % 90,
       y: 10 + (i * 20) % 80,
-      size: Math.random() * 80 + 40,
+      size: Math.random() * (isMobile ? 60 : 80) + (isMobile ? 30 : 40),
       opacity: Math.random() * 0.2 + 0.1,
       duration: Math.random() * 25 + 15,
       delay: i * 2,
       shape: ['circle', 'square', 'hexagon'][Math.floor(Math.random() * 3)]
     }));
-  }, []);
+  }, [isMobile]);
   
   // Set isClient to true after component mounts
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  // Use simpler background for mobile
+  if (isMobile) {
+    return (
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Base gradient - simplified for mobile */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#090a10] via-[#0c0e18] to-[#0f1119]" />
+        
+        {isClient && (
+          <>
+            {/* Main gradient orbs - simplified for mobile */}
+            <div className="absolute -top-[10%] -left-[10%] w-[40rem] h-[40rem] rounded-full bg-gradient-to-r from-blue-600/5 to-indigo-600/5 blur-[120px]" />
+            
+            <div className="absolute -bottom-[20%] -right-[10%] w-[35rem] h-[35rem] rounded-full bg-gradient-to-r from-violet-600/5 to-cyan-600/5 blur-[140px]" />
+
+            {/* Accent gradient */}
+            <div className="absolute top-[30%] right-[5%] w-[20rem] h-[20rem] rounded-full bg-gradient-to-r from-cyan-500/5 to-emerald-500/5 blur-[100px]" />
+            
+            {/* Minimal particles for mobile */}
+            {particles.map((particle, i) => (
+              <motion.div
+                key={`particle-${i}`}
+                className="absolute rounded-full bg-blue-400"
+                style={{
+                  width: `${particle.size}px`,
+                  height: `${particle.size}px`,
+                  left: `${particle.x}%`,
+                  top: `${particle.y}%`,
+                  opacity: particle.opacity,
+                }}
+                animate={{ 
+                  opacity: [particle.opacity, particle.opacity * 0.5, particle.opacity]
+                }}
+                transition={{ 
+                  duration: particle.duration / 2, // Faster animations on mobile
+                  delay: particle.delay,
+                  repeat: Infinity,
+                  repeatType: "mirror"
+                }}
+              />
+            ))}
+          </>
+        )}
+      </div>
+    );
+  }
+
+  // Full version for desktop
   return (
     <div className="absolute inset-0 pointer-events-none">
       {/* Base gradient */}

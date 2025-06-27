@@ -33,17 +33,20 @@
   --gray-900: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-poppins), var(--font-inter), system-ui, sans-serif;
+/* Ensure CSS variables work properly on all browsers */
+html {
+  --color-background: var(--background, #0f172a);
+  --color-foreground: var(--foreground, #f8fafc);
+  --font-sans: var(--font-poppins, system-ui), var(--font-inter, system-ui), system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--background, #0f172a);
+  color: var(--foreground, #f8fafc);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Container styles */
@@ -56,11 +59,11 @@ body {
 
 /* Modern gradient backgrounds */
 .gradient-blue {
-  background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-600) 100%);
+  background: linear-gradient(135deg, var(--blue-500, #3b82f6) 0%, var(--blue-600, #2563eb) 100%);
 }
 
 .gradient-purple {
-  background: linear-gradient(135deg, var(--blue-500) 0%, var(--purple-500) 100%);
+  background: linear-gradient(135deg, var(--blue-500, #3b82f6) 0%, var(--purple-500, #8b5cf6) 100%);
 }
 
 /* Grid pattern background */
@@ -80,13 +83,14 @@ body {
 .glass {
   background: rgba(15, 23, 42, 0.3);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Modern button styles */
 .btn-primary {
   @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
-  background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-600) 100%);
+  background: linear-gradient(135deg, var(--blue-500, #3b82f6) 0%, var(--blue-600, #2563eb) 100%);
   color: white;
   box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25);
 }
@@ -98,11 +102,39 @@ body {
 
 .btn-secondary {
   @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
-  background: var(--gray-100);
-  color: var(--gray-800);
+  background: var(--gray-100, #334155);
+  color: var(--gray-800, #f8fafc);
 }
 
 .btn-secondary:hover {
   transform: translateY(-2px);
-  background: var(--gray-200);
+  background: var(--gray-200, #475569);
+}
+
+/* Fix for mobile animations */
+@media (max-width: 767px) {
+  .animate-pulse {
+    animation: none;
+  }
+  
+  .animate-float {
+    animation: none;
+  }
+  
+  /* Simplify backdrop-filter for mobile */
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl,
+  .backdrop-blur-3xl {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  
+  /* Fix for gradient text on mobile */
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
 }
