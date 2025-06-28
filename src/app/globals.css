@@ -35,9 +35,10 @@
 
 /* Ensure CSS variables work properly on all browsers */
 html {
-  --color-background: var(--background, #0f172a);
-  --color-foreground: var(--foreground, #f8fafc);
-  --font-sans: var(--font-poppins, system-ui), var(--font-inter, system-ui), system-ui, sans-serif;
+  color-scheme: dark;
+  --color-background: #0f172a;
+  --color-foreground: #f8fafc;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   scroll-behavior: smooth;
 }
@@ -58,12 +59,14 @@ body {
   padding: 0 1.5rem;
 }
 
-/* Modern gradient backgrounds */
+/* Modern gradient backgrounds with improved fallbacks */
 .gradient-blue {
+  background: #3b82f6;
   background: linear-gradient(135deg, var(--blue-500, #3b82f6) 0%, var(--blue-600, #2563eb) 100%);
 }
 
 .gradient-purple {
+  background: #3b82f6;
   background: linear-gradient(135deg, var(--blue-500, #3b82f6) 0%, var(--purple-500, #8b5cf6) 100%);
 }
 
@@ -88,9 +91,10 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Modern button styles */
+/* Modern button styles with improved fallbacks */
 .btn-primary {
   @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
+  background: #3b82f6;
   background: linear-gradient(135deg, var(--blue-500, #3b82f6) 0%, var(--blue-600, #2563eb) 100%);
   color: white;
   box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25);
@@ -103,12 +107,15 @@ body {
 
 .btn-secondary {
   @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
+  background: #334155;
   background: var(--gray-100, #334155);
+  color: #f8fafc;
   color: var(--gray-800, #f8fafc);
 }
 
 .btn-secondary:hover {
   transform: translateY(-2px);
+  background: #475569;
   background: var(--gray-200, #475569);
 }
 
@@ -139,3 +146,20 @@ body {
     background-clip: text;
   }
 }
+
+/* Fallback classes for browsers with poor CSS variable support */
+.text-blue-400 { color: #60a5fa; }
+.text-blue-500 { color: #3b82f6; }
+.text-blue-600 { color: #2563eb; }
+
+.text-purple-400 { color: #a78bfa; }
+.text-purple-500 { color: #8b5cf6; }
+.text-purple-600 { color: #7c3aed; }
+
+.bg-blue-400 { background-color: #60a5fa; }
+.bg-blue-500 { background-color: #3b82f6; }
+.bg-blue-600 { background-color: #2563eb; }
+
+.bg-purple-400 { background-color: #a78bfa; }
+.bg-purple-500 { background-color: #8b5cf6; }
+.bg-purple-600 { background-color: #7c3aed; }

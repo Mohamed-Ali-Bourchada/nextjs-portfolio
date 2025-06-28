@@ -15,45 +15,45 @@ module.exports = {
     },
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "var(--background, #0f172a)",
+        foreground: "var(--foreground, #f8fafc)",
         
         blue: {
-          400: "var(--blue-400)",
-          500: "var(--blue-500)",
-          600: "var(--blue-600)",
+          400: "var(--blue-400, #60a5fa)",
+          500: "var(--blue-500, #3b82f6)",
+          600: "var(--blue-600, #2563eb)",
         },
         
         purple: {
-          400: "var(--purple-400)",
-          500: "var(--purple-500)",
-          600: "var(--purple-600)",
+          400: "var(--purple-400, #a78bfa)",
+          500: "var(--purple-500, #8b5cf6)",
+          600: "var(--purple-600, #7c3aed)",
         },
         
-        success: "var(--success)",
-        warning: "var(--warning)",
-        danger: "var(--danger)",
+        success: "var(--success, #10b981)",
+        warning: "var(--warning, #f59e0b)",
+        danger: "var(--danger, #ef4444)",
         
         gray: {
-          50: "var(--gray-50)",
-          100: "var(--gray-100)",
-          200: "var(--gray-200)",
-          300: "var(--gray-300)",
-          400: "var(--gray-400)",
-          500: "var(--gray-500)",
-          600: "var(--gray-600)",
-          700: "var(--gray-700)",
-          800: "var(--gray-800)",
-          900: "var(--gray-900)",
+          50: "var(--gray-50, #1e293b)",
+          100: "var(--gray-100, #334155)",
+          200: "var(--gray-200, #475569)",
+          300: "var(--gray-300, #64748b)",
+          400: "var(--gray-400, #94a3b8)",
+          500: "var(--gray-500, #cbd5e1)",
+          600: "var(--gray-600, #e2e8f0)",
+          700: "var(--gray-700, #f1f5f9)",
+          800: "var(--gray-800, #f8fafc)",
+          900: "var(--gray-900, #ffffff)",
         },
         
-        border: "var(--gray-200)",
-        input: "var(--gray-200)",
-        ring: "var(--blue-500)",
+        border: "var(--gray-200, #475569)",
+        input: "var(--gray-200, #475569)",
+        ring: "var(--blue-500, #3b82f6)",
         
         muted: {
-          DEFAULT: "var(--gray-100)",
-          foreground: "var(--gray-500)",
+          DEFAULT: "var(--gray-100, #334155)",
+          foreground: "var(--gray-500, #cbd5e1)",
         },
       },
       borderRadius: {
@@ -66,7 +66,7 @@ module.exports = {
         sm: "0.25rem",
       },
       fontFamily: {
-        sans: ["var(--font-poppins)", "var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-poppins, system-ui)", "var(--font-inter, system-ui)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
       boxShadow: {
