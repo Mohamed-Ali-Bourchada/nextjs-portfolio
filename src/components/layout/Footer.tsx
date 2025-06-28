@@ -56,7 +56,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="pt-20 pb-12 relative overflow-hidden">
+    <footer id="contact" className="pt-10 pb-12 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"></div>

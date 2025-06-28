@@ -171,7 +171,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-12 relative overflow-hidden">
+    <section id="projects" className="py-8 relative overflow-hidden">
       {/* Enhanced background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-40 -right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px]" />
@@ -233,18 +233,37 @@ export default function Projects() {
         >
           <div className="relative">
             <Swiper
+              key="featured-projects-swiper"
               modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
               effect="coverflow"
               coverflowEffect={{
                 rotate: 0,
                 stretch: 0,
                 depth: 100,
-                modifier: 2.5,
+                modifier: 2,
                 slideShadows: false,
               }}
-              slidesPerView="auto"
+              slidesPerView={1}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1.5,
+                  centeredSlides: true,
+                },
+                1024: {
+                  slidesPerView: 2.5,
+                  centeredSlides: true,
+                },
+              }}
+              spaceBetween={30}
               centeredSlides={true}
+              initialSlide={1}
+              grabCursor={true}
               loop={true}
+              speed={400}
+              simulateTouch={true}
+              touchRatio={1.5}
+              touchAngle={45}
+              threshold={5}
               autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
@@ -257,31 +276,38 @@ export default function Projects() {
                 prevEl: '.swiper-button-prev',
                 nextEl: '.swiper-button-next',
               }}
-              className="!pb-14"
+              className="!pb-16"
             >
-              {featuredProjects.map((project) => (
-                <SwiperSlide key={project.id} className="!w-[340px] md:!w-[500px] lg:!w-[650px] !h-auto">
+              {/* Duplicate slides to ensure better looping */}
+              {featuredProjects.concat(featuredProjects).slice(0, featuredProjects.length * 2).map((project, index) => (
+                <SwiperSlide key={`${project.id}-${index}`} className="py-8">
                   <div 
-                    className="relative rounded-3xl overflow-hidden shadow-xl group cursor-pointer mx-4 my-6 transform transition-all duration-500 hover:scale-[1.02]"
+                    className="card-hover rounded-3xl overflow-hidden border border-gray-200/20 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-300 group h-full flex flex-col bg-white/70 dark:bg-gray-900/50 backdrop-blur-sm transform hover:-translate-y-1 cursor-pointer"
                     onClick={() => openModal(project)}
+                    onMouseEnter={() => setHoveredId(project.id)}
+                    onMouseLeave={() => setHoveredId(null)}
                   >
-                    <div className="relative h-[300px] md:h-[350px]">
+                    {/* Image section */}
+                    <div className="relative h-64 overflow-hidden">
+                      <div className="absolute top-4 left-4 z-10">
+                        <span className="px-3 py-1 bg-black/70 backdrop-blur-sm text-white text-xs rounded-full border border-white/10 font-medium">
+                          {project.category}
+                        </span>
+                      </div>
                       <Image
                         src={project.image}
                         alt={project.title}
                         fill
-                        className="object-cover transition-all duration-700"
-                        sizes="(max-width: 768px) 340px, (max-width: 1200px) 500px, 650px"
+                        loading="eager"
+                        priority={index < 3}
+                        className={`object-cover transition-all duration-700 ${hoveredId === project.id ? 'scale-110 filter brightness-90' : 'filter brightness-95'}`}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/90"></div>
-                      <div className="absolute top-4 left-4 z-10">
-                        <span className="px-3 py-1 bg-blue-600 text-white text-xs rounded-full font-medium">
-                          {project.category}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 opacity-95 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                        <h3 className="text-2xl md:text-3xl font-bold mb-3 text-white">{project.title}</h3>
-                        <p className="text-white/90 mb-4 line-clamp-2">{project.description}</p>
+                      <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/80 transition-opacity duration-300 ${hoveredId === project.id ? 'opacity-95' : 'opacity-80'}`}></div>
+                      
+                      {/* Content overlay on image */}
+                      <div className="absolute inset-0 flex flex-col justify-end p-6">
+                        <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-md">{project.title}</h3>
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.tags.slice(0, 3).map((tag) => (
                             <span
@@ -297,9 +323,44 @@ export default function Projects() {
                             </span>
                           )}
                         </div>
-                        <button className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white rounded-full transition-all">
+                      </div>
+                    </div>
+                    
+                    {/* Content section */}
+                    <div className="p-6 flex flex-col flex-grow">
+                      <p className="text-gray-600 dark:text-gray-300 mb-6 line-clamp-3 flex-grow">
+                        {project.description}
+                      </p>
+                      <div className="flex justify-between items-center mt-auto">
+                        <div className="flex space-x-4">
+                          {project.githubUrl !== "#" && (
+                            <Link
+                              href={project.githubUrl}
+                              className="p-2 rounded-full hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all hover:scale-110"
+                              aria-label={`GitHub repository for ${project.title}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <FiGithub className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                            </Link>
+                          )}
+                          {project.liveUrl !== "#" && (
+                            <Link
+                              href={project.liveUrl}
+                              className="p-2 rounded-full hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all hover:scale-110"
+                              aria-label={`Live demo for ${project.title}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <FiExternalLink className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                            </Link>
+                          )}
+                        </div>
+                        <button className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline group/link cursor-pointer">
                           <span>View Details</span>
-                          <FiArrowRight className="ml-2 h-4 w-4" />
+                          <FiArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                         </button>
                       </div>
                     </div>
@@ -308,12 +369,12 @@ export default function Projects() {
               ))}
             </Swiper>
             
-            {/* Custom navigation buttons - improved design */}
-            <div className="swiper-button-prev after:content-none !w-11 !h-11 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-100 dark:border-gray-700 hover:bg-blue-500 hover:border-blue-600 dark:hover:bg-blue-600 dark:hover:border-blue-500 transition-all duration-300 flex items-center justify-center">
-              <FiChevronLeft className="h-5 w-5 text-gray-700 dark:text-gray-200 group-hover:text-white" />
+            {/* Custom navigation buttons - smaller and more modern */}
+            <div className="swiper-button-prev after:content-none !w-8 !h-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md border border-gray-100 dark:border-gray-700 hover:bg-blue-500 hover:border-blue-600 dark:hover:bg-blue-600 dark:hover:border-blue-500 transition-all duration-300 flex items-center justify-center !left-2 lg:!left-4 cursor-pointer">
+              <FiChevronLeft className="h-4 w-4 text-gray-700 dark:text-gray-200 group-hover:text-white" />
             </div>
-            <div className="swiper-button-next after:content-none !w-11 !h-11 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-100 dark:border-gray-700 hover:bg-blue-500 hover:border-blue-600 dark:hover:bg-blue-600 dark:hover:border-blue-500 transition-all duration-300 flex items-center justify-center">
-              <FiChevronRight className="h-5 w-5 text-gray-700 dark:text-gray-200 group-hover:text-white" />
+            <div className="swiper-button-next after:content-none !w-8 !h-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-md border border-gray-100 dark:border-gray-700 hover:bg-blue-500 hover:border-blue-600 dark:hover:bg-blue-600 dark:hover:border-blue-500 transition-all duration-300 flex items-center justify-center !right-2 lg:!right-4 cursor-pointer">
+              <FiChevronRight className="h-4 w-4 text-gray-700 dark:text-gray-200 group-hover:text-white" />
             </div>
           </div>
         </motion.div>
@@ -322,7 +383,7 @@ export default function Projects() {
         <div className="mt-4 mb-6 text-center">
           <button
             onClick={toggleShowAllProjects}
-            className="inline-flex items-center px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-1"
+            className="inline-flex items-center px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-1 cursor-pointer"
           >
             <span>{showAllProjects ? 'Hide All Projects' : 'View All Projects'}</span>
             <FiArrowRight className={`ml-2 h-5 w-5 transition-transform duration-300 ${showAllProjects ? 'rotate-90' : ''}`} />
@@ -372,9 +433,10 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: showAllProjects ? 1 : 0, y: showAllProjects ? 0 : 30 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card-hover rounded-3xl overflow-hidden border border-gray-200/20 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-300 group h-full flex flex-col bg-white/70 dark:bg-gray-900/50 backdrop-blur-sm"
+                className="card-hover rounded-3xl overflow-hidden border border-gray-200/20 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-300 group h-full flex flex-col bg-white/70 dark:bg-gray-900/50 backdrop-blur-sm cursor-pointer"
                 onMouseEnter={() => setHoveredId(project.id)}
                 onMouseLeave={() => setHoveredId(null)}
+                onClick={() => openModal(project)}
               >
                 <div className="relative h-64 overflow-hidden">
                   <div className="absolute top-4 left-4 z-10">
@@ -386,13 +448,13 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className={`object-cover transition-all duration-700 ${hoveredId === project.id ? 'scale-110 filter brightness-90' : ''}`}
+                    className={`object-cover transition-all duration-700 ${hoveredId === project.id ? 'scale-110 filter brightness-90' : 'filter brightness-95'}`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/80 transition-opacity duration-300 ${hoveredId === project.id ? 'opacity-90' : 'opacity-70'}`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/80 transition-opacity duration-300 ${hoveredId === project.id ? 'opacity-95' : 'opacity-80'}`}></div>
                   
                   <div className="absolute inset-0 flex flex-col justify-end p-6">
-                    <h3 className="text-2xl font-bold mb-3 text-white">{project.title}</h3>
+                    <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-md">{project.title}</h3>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.slice(0, 3).map((tag) => (
                         <span
@@ -424,6 +486,7 @@ export default function Projects() {
                           aria-label={`GitHub repository for ${project.title}`}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <FiGithub className="h-5 w-5 text-gray-700 dark:text-gray-300" />
                         </Link>
@@ -435,14 +498,18 @@ export default function Projects() {
                           aria-label={`Live demo for ${project.title}`}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <FiExternalLink className="h-5 w-5 text-gray-700 dark:text-gray-300" />
                         </Link>
                       )}
                     </div>
                     <button
-                      onClick={() => openModal(project)}
-                      className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline group/link"
+                      className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline group/link cursor-pointer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(project);
+                      }}
                     >
                       <span>View Details</span>
                       <FiArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />

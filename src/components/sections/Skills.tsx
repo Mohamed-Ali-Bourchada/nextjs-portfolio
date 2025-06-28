@@ -11,7 +11,7 @@ const SkillCategories = dynamic(() => import("./skills/SkillCategories"), {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-16 relative overflow-hidden">
+    <section id="skills" className="py-6 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-40 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px]" />

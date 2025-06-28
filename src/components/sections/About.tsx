@@ -11,7 +11,7 @@ const IconsSection = dynamic(() => import("./about/IconsSection"), {
 
 export default function About() {
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-6 relative">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-40 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px]" />
