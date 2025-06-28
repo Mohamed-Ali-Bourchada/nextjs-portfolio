@@ -2,6 +2,10 @@
 
 A modern Single Page Application (SPA) portfolio for a Full-Stack Web & Mobile Developer built with Next.js and Tailwind CSS.
 
+## Preview
+
+![Portfolio Preview](public/projects/screenshots/portfolio-preview.png)
+
 ## Features
 
 - 🌙 Dark/Light mode toggle
@@ -60,7 +64,7 @@ portfolio/
 │   ├── components/    # React components
 │   │   ├── layout/    # Layout components
 │   │   ├── sections/  # Page sections
-│   │   
+│   │
 │   |
 ├── tailwind.config.ts # Tailwind configuration
 └── README.md          # Project documentation
