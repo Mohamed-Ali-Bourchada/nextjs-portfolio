@@ -71,7 +71,7 @@ const projects = [
       "Modern personal portfolio website showcasing projects and skills with a responsive design, animations, and dark/light mode.",
     image: "/projects/portfolio.webp",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    category: "Frontend",
+    category: "UI Template",
     featured: true,
     githubUrl: "https://github.com/Mohamed-Ali-Bourchada/nextjs-portfolio.git",
     liveUrl: "#",
@@ -100,6 +100,19 @@ const projects = [
     githubUrl: "https://github.com/Mohamed-Ali-Bourchada/first_laravel.git",
     liveUrl: "#",
   },
+ {
+  id: 8,
+  title: "Modern Login UI Template",
+  description:
+    "A sleek, modern, and responsive login and signup UI template, built with Angular and Tailwind CSS. Features unique backgrounds and user-friendly form elements.",
+  image: "/projects/auth-ui.webp",
+  tags: ["Angular", "Tailwind CSS", "TypeScript", "Responsive Design", "UI/UX"],
+  category: "UI Template",
+  featured: true,
+  githubUrl: "https://github.com/Mohamed-Ali-Bourchada/auth-ui.git",
+  liveUrl: "#",
+}
+
 ];
 
 // Extract unique categories
