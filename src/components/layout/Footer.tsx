@@ -33,8 +33,8 @@ export default function Footer() {
               href="#home"
               className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
             >
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Dev</span>
-              <span className="font-semibold">Portfolio</span>
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Dali</span>
+              <span className="font-semibold">Dev</span>
             </Link>
             <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-md">
               Professional web and mobile development services.
