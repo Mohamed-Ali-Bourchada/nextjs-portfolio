@@ -110,7 +110,7 @@ const projects = [
   category: "UI Template",
   featured: true,
   githubUrl: "https://github.com/Mohamed-Ali-Bourchada/auth-ui.git",
-  liveUrl: "#",
+  liveUrl: "https://auth.dali-br.me/",
 }
 
 ];
