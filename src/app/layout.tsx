@@ -16,7 +16,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Full-Stack Web & Mobile Developer Portfolio",
+  title: "Full-Stack Web & Mobile Developer",
   description: "Experienced in building scalable web and mobile applications with modern technologies.",
 };
 
