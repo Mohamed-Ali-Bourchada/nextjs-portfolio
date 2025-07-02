@@ -289,7 +289,7 @@ export default function Projects() {
                 prevEl: '.swiper-button-prev',
                 nextEl: '.swiper-button-next',
               }}
-              className="!pb-16"
+              className="!pb-1"
             >
               {/* Duplicate slides to ensure better looping */}
               {featuredProjects.concat(featuredProjects).slice(0, featuredProjects.length * 2).map((project, index) => (

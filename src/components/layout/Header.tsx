@@ -77,8 +77,8 @@ export default function Header() {
           onClick={() => handleNavClick("home")}
           className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
         >
-          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Dev</span>
-          <span className="font-semibold">Portfolio</span>
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Dali</span>
+          <span className="font-semibold">Dev</span>
         </Link>
 
         {/* Desktop Navigation */}
