@@ -91,7 +91,7 @@ export default function Header() {
               className={`text-sm font-medium transition-all duration-300 relative ${
                 activeSection === link.href.substring(1)
                   ? "text-blue-400"
-                  : "text-gray-300 hover:text-blue-400"
+                  : "text-gray-200 hover:text-blue-400"
               }`}
             >
               {link.label}
@@ -145,7 +145,7 @@ export default function Header() {
                     className={`text-sm py-2 px-4 rounded-lg transition-colors ${
                       activeSection === link.href.substring(1)
                         ? "text-blue-400 bg-blue-500/5"
-                        : "text-gray-300 hover:bg-gray-800/50"
+                        : "text-gray-200 hover:bg-gray-800/50"
                     }`}
                   >
                     {link.label}

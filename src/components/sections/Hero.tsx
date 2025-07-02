@@ -169,7 +169,7 @@ export default function Hero() {
                     <FaLinkedinIn className="w-4 h-4 text-gray-300" />
                   </motion.a>
                   <motion.a 
-                    href="https://twitter.com/ma_bourchada" 
+                    href="https://x.com/MohamedBrrr" 
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Visit my Twitter profile"

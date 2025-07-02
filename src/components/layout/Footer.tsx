@@ -36,20 +36,20 @@ export default function Footer() {
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Dali</span>
               <span className="font-semibold">Dev</span>
             </Link>
-            <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-md">
+            <p className="mt-4 text-gray-300 dark:text-gray-300 max-w-md">
               Professional web and mobile development services.
               Available for freelance work and collaborations.
             </p>
           </div>
           
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">Navigation</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-200 dark:text-gray-200 mb-4">Navigation</h3>
             <ul className="grid grid-cols-2 gap-2">
               {["Home", "About", "Skills", "Projects", "Contact"].map((item) => (
                 <li key={item}>
                   <Link 
                     href={`#${item.toLowerCase()}`}
-                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="text-gray-300 dark:text-gray-300 hover:text-blue-400 dark:hover:text-blue-400 transition-colors"
                   >
                     {item}
                   </Link>
@@ -59,18 +59,18 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">Services</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-200 dark:text-gray-200 mb-4">Services</h3>
             <ul className="space-y-2">
-              <li className="text-gray-600 dark:text-gray-300">Web Development</li>
-              <li className="text-gray-600 dark:text-gray-300">Mobile App Development</li>
-              <li className="text-gray-600 dark:text-gray-300">UI/UX Design</li>
-              <li className="text-gray-600 dark:text-gray-300">Consulting</li>
+              <li className="text-gray-300 dark:text-gray-300">Web Development</li>
+              <li className="text-gray-300 dark:text-gray-300">Mobile App Development</li>
+              <li className="text-gray-300 dark:text-gray-300">UI/UX Design</li>
+              <li className="text-gray-300 dark:text-gray-300">Consulting</li>
             </ul>
           </div>
         </div>
         
         <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-gray-200/10 dark:border-gray-800/30">
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 md:mb-0">
+          <p className="text-sm text-gray-300 dark:text-gray-300 mb-4 md:mb-0">
             © {currentYear} Mohamed Ali Bourchada. All rights reserved.
           </p>
           
