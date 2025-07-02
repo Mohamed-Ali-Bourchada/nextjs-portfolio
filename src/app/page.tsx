@@ -2,6 +2,7 @@ import { Viewport } from "next";
 import Header from "@/components/layout/Header";
 import dynamic from "next/dynamic";
 import Footer from "@/components/layout/Footer";
+import Contact from "@/components/sections/Contact";
 
 // Dynamically import heavy components
 const Hero = dynamic(() => import("@/components/sections/Hero"), { 
@@ -41,6 +42,7 @@ export default function Home() {
       <About />
       <Skills />
       <Projects />
+      <Contact />
       <Footer />
     </main>
   );
