@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import LoadingScreen from "@/components/layout/LoadingScreen";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans bg-slate-900 text-slate-50 antialiased`}>
+        <LoadingScreen />
         {children}
       </body>
     </html>
