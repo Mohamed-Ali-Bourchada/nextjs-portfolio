@@ -587,14 +587,14 @@ export default function Projects() {
                 <h4 className="text-xl font-semibold mb-4">Project Overview</h4>
                 <p className="mb-6">{selectedProject.description}</p>
                 
-                <h4 className="text-xl font-semibold mb-4">Key Features</h4>
+                {/* <h4 className="text-xl font-semibold mb-4">Key Features</h4>
                 <ul className="list-disc pl-5 space-y-2 mb-6">
                   <li>Responsive design optimized for all device sizes</li>
                   <li>Intuitive user interface with modern design principles</li>
                   <li>Performance optimized for fast loading times</li>
                   <li>Secure authentication and data protection</li>
                   <li>Comprehensive documentation and clean code structure</li>
-                </ul>
+                </ul> */}
                 
                 <h4 className="text-xl font-semibold mb-4">Technologies Used</h4>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
